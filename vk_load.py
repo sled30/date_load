@@ -12,7 +12,6 @@ def read_file(file_name):
             password = serialize_esc(date[3])
             phone = serialize_esc(date[4])
             phone = serialize_phone(phone)
-            print(phone)
         file.close()
 
 def serialize_esc(string):
