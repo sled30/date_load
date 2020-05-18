@@ -24,10 +24,9 @@ def insert_db(sql):
             answer = cur.lastrowid()
             cur.close
             conn.close
-            # pint(answer)
         return answer
     except Exception as e:
-        raise
+        print(e)
 
 def version():
     conn = open_conn()
@@ -45,15 +44,17 @@ def insert_email(email):
 
         answer = request_db(sql_check)
         if int(len(answer)) == 0:
-            print(email)
             id = request_db(sql_insert)
+            return id[0][0]
+        return answer[0][0]
+
 
     except Exception as e:
         print(e)
 
 
-def insert_phone():
-    pass
+def insert_phone(phone):
+    print(phone)
 
 def insert_date():
     pass
