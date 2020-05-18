@@ -55,7 +55,7 @@ def insert_email(email):
 
 def insert_phone(phone):
     try:
-        if len(phone) < 20:
+        if len(phone) > 19:
             sql_check = "select id from phone where long='{}'".format(phone)
             sql_insert = "insert into phone(long) values('{}') returning id".format(phone)
         else:
