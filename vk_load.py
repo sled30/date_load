@@ -1,5 +1,5 @@
 import os
-
+import db
 
 
 def read_file(file_name):
@@ -9,9 +9,12 @@ def read_file(file_name):
             name = serialize_esc(date[0])
             surname = serialize_esc(date[1])
             email = serialize_esc(date[2])
+            id_email = db.insert_email(email)
             password = serialize_esc(date[3])
             phone = serialize_esc(date[4])
             phone = serialize_phone(phone)
+            id_phone = db.insert_phone(phone)
+            
         file.close()
 
 def serialize_esc(string):

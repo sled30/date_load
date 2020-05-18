@@ -54,7 +54,17 @@ def insert_email(email):
 
 
 def insert_phone(phone):
-    print(phone)
+    try:
+        sql_check = "select id from phone where phone='{}'".format(phone)
+        sql_insert = "insert into phone(phone) values('{}') returning id".format(phone)
+
+        answer = request_db(sql_check)
+        if int(len(answer)) == 0:
+            id = request_db(sql_insert)
+            return id[0][0]
+        return answer[0][0]
+    except Exception as e:
+        raise
 
 def insert_date():
     pass
