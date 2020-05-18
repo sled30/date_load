@@ -66,8 +66,18 @@ def insert_phone(phone):
     except Exception as e:
         raise
 
-def insert_date():
-    pass
+def insert_date(name, surname, id_email, password, id_phone):
+    try:
+        sql_check = "select id from file_vk where name='{}' and surname='{}' and email='{}' and password='{}' and phone='{}' ".format(name, surname, id_email, password, id_phone)
+        sql_insert = "insert into file_vk(name, surname, email, password, phone) values('{}', '{}', '{}', '{}','{}') returning id".format(name, surname, id_email, password, id_phone)
+
+        answer = request_db(sql_check)
+        if int(len(answer)) == 0:
+            id = request_db(sql_insert)
+            return id[0][0]
+        return answer[0][0]
+    except Exception as e:
+        raise
 
 def main():
     vershion()

@@ -14,7 +14,7 @@ def read_file(file_name):
             phone = serialize_esc(date[4])
             phone = serialize_phone(phone)
             id_phone = db.insert_phone(phone)
-            
+            id_date = db.insert_date(name, surname, id_email, password, id_phone)
         file.close()
 
 def serialize_esc(string):
