@@ -72,8 +72,13 @@ def insert_phone(phone):
 
 def insert_date(name, surname, id_email, password, id_phone):
     try:
+<<<<<<< HEAD
         if id_email is None:
             email = '0'
+=======
+        if email is None:
+            email = 'NULL'
+>>>>>>> c9e2fa5dc8379a7f43a02f0ba07d3a35227f3afc
         sql_check = "select id from file_vk where name='{}' and surname='{}' and email='{}' and password='{}' and phone='{}' ".format(name, surname, id_email, password, id_phone)
         sql_insert = "insert into file_vk(name, surname, email, password, phone) values('{}', '{}', '{}', '{}','{}') returning id".format(name, surname, id_email, password, id_phone)
 
